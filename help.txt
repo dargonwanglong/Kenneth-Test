@@ -1,0 +1,163 @@
+KennethdeMacBook-Pro:neocore kenneth$ git remote -v
+origin	https://github.com/dargonwanglong/neocore (fetch)
+origin	https://github.com/dargonwanglong/neocore (push)
+
+KennethdeMacBook-Pro:neocore kenneth$ git remote add create https://github.com/ServiceMax-Engineering/neocore.git
+
+KennethdeMacBook-Pro:neocore kenneth$ git remote -v
+5.0.0	https://github.com/dargonwanglong/neocore (fetch)
+5.0.0	https://github.com/dargonwanglong/neocore (push)
+create	https://github.com/ServiceMax-Engineering/neocore.git (fetch)
+create	https://github.com/ServiceMax-Engineering/neocore.git (push)
+
+*********************************************************************************
+Git Help
+*********************************************************************************
+# 1.Fetch Latest Code and merge to branch 5.0.0
+git fetch create
+git pull create 5.0.0
+
+# 2.Create new branch for the ticket changes
+git checkout -b MAX-1210
+
+# Merge latest code from 5.0.0 base on create to the new branch
+git pull --rebase create 5.0.0
+
+# When changes are finished, add the files and commit
+git add <files to commit>
+git commit -m "message"
+
+# If new changes need to be committed later, use amend option to generate only 1 commit
+git add <new files to commit>
+git commit --amend
+
+# When changes are committed, push them to origin
+git push 5.0.0 MAX-171 --force
+
+git commit --amend
+git push origin MAX-171 --force
+
+ou need to bring changes from one branch to another, i.e. 4.0.0 to 3.5.0, then do the following:
+
+1) git checkout intalio/3.5.0
+2) git checkout -b BUG-CORE-001_3.5.0
+3) git pull --rebase intalio 3.5.0
+4) git cherry-pick <commit from 4.0.0>
+5) git commit
+6) git push --force origin BUG-CORE-001_3.5.0
+7) Open PR against intalio/3.5.0
+
+neocore/
+mvn compile -Pstandalone
+mvn eclipse:eclipse -Pstandalone
+
+mvn eclipse:clean eclipse:eclipse -Dmaven.test.skip=true -P standalone
+
+mvn    install  -DskipTests=true
+mvn  eclipse:eclipse  -DskipTests=true
+
+neocore-auth/
+node server.js
+
+487d0d02-8127-4c09-afa6-9b670914b475
+
+
+UT Help:
+第一次启动参数：
+-Ddont_drop_tables_in_bootstrap_helper=false -Xmx12048m -XX:MaxPermSize=512m  -Ddisable_lucene_auto_reindex=true  -Dlogback.configurationFile=${resource_loc:/create/src/main/webapp/resources/logback.xml} -Dencryption.key.file.path=/Users/kenneth/ServiceMax/neocore -Dbootstrap=false
+数据库为test，生成之后改参数：
+-Ddont_drop_tables_in_bootstrap_helper=false
+
+
+-Xmx3072m -XX:MaxPermSize=512m -Dno_notification=true -Ddisable_lucene_auto_reindex=true -Ddisable_search_auto_reindex=false -Dencryption.key.file.path=/Users/kenneth/ServiceMax/neocore -Declipse.ignoreApp=true -Dintalio.prodrdb.dbname=intalio -Dlogback.configurationFile=/Users/kenneth/ServiceMax/neocore/logback-kenneth.xml
+
+
+update io_user set io_password     ='{UojJVSKLWo9AK0V0OA9R2A==,JvKFAu/2ZBM29jyOraw7QR5zwJMCm+sL+IP6o6M2+FY=}' where io_username = 'system';
+
+
+(1)copy the attached file to the directory of encryption.key.file.path(/home/sam/neocore in my machine)
+(2) Open EncryptDecryptHelper.java, add the statement " filePath = "/home/sam/neocore";“ in method getEncryptionKeyFileName(), for example
+        if (filePath == null) {
+            //If the path parameter was not indicated or cannot be created, try using the default location
+            filePath = createPathIfNotExist(ENCRYPTION_KEY_FILE_DEFAULT_PATH);
+        }
+        filePath = "/Users/kennethwang/ServiceMax";
+        if (filePath != null) {
+            _logger.debug("Encryption key file found: " + filePath + "/"
+                    + ENCRYPTION_KEY_FILE_NAME);
+            return filePath + "/" + ENCRYPTION_KEY_FILE_NAME;
+        }
+bootstrap.java
+          注释掉:  _bootDataLocation = decideBootDataLocation();
+          然后改成:
+          _bootDataLocation = new File(
+                 "/Users/kennethwang/ServiceMax/code/neocore/bootstrap_data/src/internal/248ef23d-f438-493c-8d8a-3e7c7a67a933/bootdata");
+
+
+es_index
+
+
+kenneth@svmxc_15.59104.patch
+ServiceMax2016&
+9do8bi04KKCu50TPRb3Q7mkp
+SVMXC__Service_Order_Line__c
+
+kenneth.wang@qa3.com.cfg4
+https://cs11.salesforce.com/services/Soap/u/36.0
+
+
+Component upgrade
+1. install RVM(https://rvm.io/)
+$ \curl -sSL https://get.rvm.io | bash -s stable
+2. install jruby
+$ rvm install jruby
+$ gem install bundler
+3. Update Gemfile
+4. Install Component in gem
+$ gem install jruby-openssl -v 0.9.16
+5. Run bundle install under neocore/polyglot.ruby/src/main/resources/ruby
+$ bundle install
+$ bundle package --all
+
+
+cf login -a https://api.cfeng31.servicemax.io -u admin -p serviceMax2016 --skip-ssl-validation
+cf ssh kenneth_pipes
+cf ssh admin / max
+tail -f app/logs/cloud.log
+DBURL eng32
+cf env admin | grep postgres
+psql -h  -p  -U  -W
+
+/usr/local/Cellar/activemq/5.13.3/bin/activemq console
+sudo /usr/local/nginx/sbin/nginx
+
+activemq start
+activemq console
+
+java.lang.System.getProperty("nodeId")
+
+admin.cfeng31.servicemax.io
+admin/serviceMax2016
+
+VontaeMack
+
+cat ~/.ssh/id_rsa.pub
+TPR: ubuntu@52.34.123.214
+psql -Upostgres
+
+predix
+cf login -a https://api.system.aws-usw02-pr.ice.predix.io
+kenneth.wang@servicemax.com
+ServiceMax2016&
+
+https://repo.servicemax.io/apps/packages/external/
+Max serviceMax1243
+psql -U intalio -d intalio < 6a3ff6bb-c5bc-4eac-bddc-9ef0bd8433d0.sql
+
+
+scp a.sql ubuntu@ir5.servicemax.io:~/
+psql -Uintalio -hlocalhost intalio < a.sql
+password  intalio
+
+
+skip_package_validation
